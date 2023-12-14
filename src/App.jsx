@@ -5,14 +5,17 @@ import { ListadoPacientes } from './compoments/ListadoPacientes'
 
 function App() {
 
-  const [pacientes, setPacientes] = useState([])
+  const [pacientes, setPacientes] = useState(() => {
+    const pacientesGuardados = localStorage.getItem('pacientes')
+    return pacientesGuardados ? JSON.parse(pacientesGuardados) : []
+  });
 
   return (
     <div className='container mx-auto mt-14'>
       <Header/>
 
       <div className='my-14 mx-5 flex flex-col md:flex-row gap-10'>
-        <Formulario setPacientes={setPacientes} pacientes={pacientes} />
+        <Formulario pacientes={pacientes} setPacientes={setPacientes} />
           
         <ListadoPacientes pacientes={pacientes} setPacientes={setPacientes}/>
       </div>

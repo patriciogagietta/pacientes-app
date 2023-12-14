@@ -5,6 +5,8 @@ export const ListadoPacientes = ({pacientes, setPacientes}) => {
   const handleDeletePAciente = (index) => {
     const newArrayPacientes = pacientes.filter((_, posPaciente) => posPaciente !== index);
     setPacientes(newArrayPacientes);
+
+    localStorage.setItem('pacientes', JSON.stringify(newArrayPacientes))
   };
 
   return (

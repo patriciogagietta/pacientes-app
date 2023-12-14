@@ -7,7 +7,6 @@ export const Formulario = ({setPacientes,pacientes}) => {
   const [telefono, setTelefono] = useState('')
   const [fecha, setFecha] = useState('')
   const [sintomas, setSintomas] = useState('')
-
   const [error, setError] = useState(false)
 
   const handleSubmit = (e) => {
@@ -18,15 +17,19 @@ export const Formulario = ({setPacientes,pacientes}) => {
      
     } else {
       setError(false)
-      setPacientes([
-        ...pacientes, 
-        {
+
+      const nuevoPaciente = 
+      {
         'nombre': nombre,
         'apellido': apellido,
         'telefono': telefono,
         'fecha': fecha,
         'sintomas': sintomas
-      }])
+      }
+
+      const nuevosPacientes = [...pacientes, nuevoPaciente]
+      localStorage.setItem('pacientes', JSON.stringify(nuevosPacientes))
+      setPacientes(nuevosPacientes)
 
       // reseteo los valores de los estados
       setNombre('');
