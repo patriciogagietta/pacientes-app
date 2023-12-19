@@ -5,7 +5,9 @@ import { ListadoPacientes } from './compoments/ListadoPacientes'
 
 function App() {
 
-  const [pacientes, setPacientes] = useState(() => JSON.parse(window.localStorage.getItem('pacientes') || [] ));
+  const storedPacientes = JSON.parse(window.localStorage.getItem('pacientes')) || [];
+  const [pacientes, setPacientes] = useState(storedPacientes);
+
 
   return (
     <div className='container mx-auto mt-14'>

@@ -2,11 +2,11 @@ import { MdDelete } from "react-icons/md";
 
 export const ListadoPacientes = ({pacientes, setPacientes}) => {
 
-  const handleDeletePAciente = (index) => {
+  const handleDeletePaciente = (index) => {
     const newArrayPacientes = pacientes.filter((_, posPaciente) => posPaciente !== index);
-    setPacientes(newArrayPacientes);
 
-    localStorage.setItem('pacientes', JSON.stringify(newArrayPacientes))
+    localStorage.setItem('pacientes', JSON.stringify(newArrayPacientes));
+    setPacientes(newArrayPacientes);
   };
 
   return (
@@ -19,7 +19,7 @@ export const ListadoPacientes = ({pacientes, setPacientes}) => {
             <div key={index} className="mb-4 p-4 bg-zinc-800 shadow-md rounded-lg relative">
 
               <button
-                onClick={() => handleDeletePAciente(index)}
+                onClick={() => handleDeletePaciente(index)}
                 className="bg-indigo-600 text-white p-2 rounded absolute right-4 top-4 hover:bg-indigo-700">
                 <MdDelete />
               </button>

@@ -27,9 +27,11 @@ export const Formulario = ({setPacientes,pacientes}) => {
         'sintomas': sintomas
       }
 
-      const nuevosPacientes = [...pacientes, nuevoPaciente]
-      localStorage.setItem('pacientes', JSON.stringify(nuevosPacientes))
-      setPacientes(nuevosPacientes)
+      const storedPacientes = JSON.parse(window.localStorage.getItem('pacientes')) || [];
+      const nuevosPacientes = [...storedPacientes, nuevoPaciente];
+
+      localStorage.setItem('pacientes', JSON.stringify(nuevosPacientes));
+      setPacientes(nuevosPacientes);
 
       // reseteo los valores de los estados
       setNombre('');
